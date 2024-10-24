@@ -55,6 +55,22 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
 import SingupImage2 from "./SingupImage2.png"
 import SingupImage3 from "./SingupImage3.png"
+import { IoIosAdd } from "react-icons/io";
+import { TiTick } from "react-icons/ti";
+
+import album1 from "./albums/album1.jpeg"
+import album2 from "./albums/album2.jpeg"
+import album3 from "./albums/album3.jpeg"
+import album4 from "./albums/album4.jpeg"
+import album5 from "./albums/album5.jpeg"
+import album6 from "./albums/album6.jpeg"
+
+import instr1 from "./instruments/mf1.jpg"
+import instr2 from "./instruments/mf2.jpg"
+import instr3 from "./instruments/mf3.jpg"
+import instr4 from "./instruments/mf4.jpg"
+import instr5 from "./instruments/mf5.jpg"
+import instr6 from "./instruments/mf7.jpg"
 
 export const login ={
     FaEye,
@@ -69,7 +85,6 @@ export const login ={
     logo,
     signupImage,
 }
-
 
 export const assets = {
     
@@ -102,52 +117,89 @@ export const assets = {
     IoMdHeartEmpty,
     FaHeart,
     SingupImage2,
-    SingupImage3
+    SingupImage3,
+    IoIosAdd,
+    TiTick,
+    
 }
 
 export const albumsData = [
     {   
         id:0,
         name: "Top 50 Global",
-        image: img8,
+        image: album1,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#2a4365"
     },
     {   
         id:1,
         name: "Top 50 India",
-        image: img9,
+        image: album2,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#22543d"
     },
     {   
         id:2,
         name: "Trending India",
-        image: img10,
+        image: album3,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#742a2a"
     },
     {   
         id:3,
         name: "Trending Global",
-        image: img16,
+        image: album4,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#44337a"
     },
     {   
         id:4,
         name: "Mega Hits,",
-        image: img11,
+        image: album5,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#234e52"
     },
     {   
         id:5,
         name: "Happy Favorites",
-        image: img15,
+        image: album6,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#744210"
     }
+]
+
+export const instrumentData=[
+    {
+        name:"guitar",
+        image:instr1,
+        added:false,
+    },
+    {
+        name:"violen",
+        image:instr2,
+        added:false,
+    },
+    {
+        name:"drum",
+        image:instr3,
+        added:false,
+    },
+    {
+        name:"trumphet",
+        image:instr4,
+        added:false,
+    },
+    {
+        name:"flute",
+        image:instr5,
+        added:false,
+    },
+    {
+        name:"electric guitar",
+        image:instr6,
+        added:false,
+    },
+
 ]
 
 export const songsData = [

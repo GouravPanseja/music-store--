@@ -1,0 +1,40 @@
+/* Style for the alert popup */
+.alert-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Hidden and scaled down */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for appearance */
+}
+
+/* When the alert popup is shown */
+.alert-popup.show {
+    display: block;
+    opacity: 1; /* Full visibility */
+    transform: translate(-50%, -50%) scale(1); /* Scale to full size */
+}
+
+/* Style for the close button */
+.close-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.close-button:hover {
+    background-color: #45a049;
+}

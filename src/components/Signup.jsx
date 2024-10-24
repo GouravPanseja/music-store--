@@ -1,7 +1,6 @@
-import React, {useContext, useState} from "react";
-import "./styles/Signup.css";
+import React, {useContext, useState, useEffect} from "react";
+import "./styles/signup.css";
 import {login, assets} from "../assets/assets";
-import {useForm} from "react-hook-form"
 import { useNavigate,Link } from "react-router-dom";
 import {Oval} from "react-loader-spinner";
 import toast from "react-hot-toast";
@@ -12,15 +11,44 @@ export default function Signup(){
     const [isShowPassword_2, setIsShowPassword_2] =  useState(false);
 
     const {IoPersonSharp, MdOutlineMailOutline, IoIosLock,FaEye,FaEyeSlash,FaShieldHalved, googleLogo,microsoftLogo,signupImage, RiErrorWarningLine} = login;
-    const {SingupImage2, SingupImage3} = assets;
+    const {SingupImage2} = assets;
     const [isLoading , setIsLoading] = useState(false);
+
+    const [quotes, setQuotes] = useState([]);
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        async function fetchData(){
+            const url = 'https://the-personal-quotes.p.rapidapi.com/quotes/tags/music';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '948c9f9febmsh32218e289f31c3bp184ae8jsnf2a39278dd81',
+                    'x-rapidapi-host': 'the-personal-quotes.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+
+                console.log(result);
+                
+                setQuotes(result);
+
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+        fetchData();
+    },[])
 
     async function handleSubmit(e){
 
@@ -66,6 +94,9 @@ export default function Signup(){
                 color: '#fff',
                 },
             });
+
+
+
             navigate("/login");
 
         } 
@@ -253,11 +284,17 @@ export default function Signup(){
                     <Link to="/login" className="text-white font-extralight border-[1px] border-white px-2 rounded-md"> Login </Link>
                 </div>
                 <div className=" text-center">
-                    <p className="text-white text-[2.3rem] ">Sign up <br/> and come on in</p>
+                    <p className="text-white text-[2.3rem] ">
+                    {
+                       quotes.length > 0 && quotes.find((data)=> data.quote.length <= 20)?.quote
+                    }
+                    </p>
      
                 </div>
 
                 <div className="xl:w-[350px] w-[300px] xl:h-[350px] h-[300px] mt-3 rounded-full">
+                    
+
                     <img
                         src={SingupImage2}
                         alt="signupImage"

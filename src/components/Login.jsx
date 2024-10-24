@@ -17,9 +17,7 @@ export default function Login(){
     const [isChecked, setIsChecked] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-
     const {profileData, setProfileData} = useContext(PlayerContext);
-
 
     function sendDangerToast(msg){
         toast(msg,{
@@ -41,7 +39,6 @@ export default function Login(){
             },
         });
     }
-
     async function formSubmit(e){
         e.preventDefault();
 
@@ -68,8 +65,7 @@ export default function Login(){
         setProfileData(userData);
 
 
-
-        navigate("/");
+        window.location.href="http://localhost:5500/landing/add.html"
     }
 
     return (

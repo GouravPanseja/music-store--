@@ -7,6 +7,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import LikedSongs from "./LikedSongsDisplay";
 import { PlayerContext } from "../context/PlayerContext";
+import Popup from "./Popup";
 
 export default React.memo(function Display(){
 
@@ -31,12 +32,9 @@ export default React.memo(function Display(){
         }
     })
 
-    
-   
-
-
     return (
         <div ref={displayRef} className={`w-[100%]  rounded bg-[#121212] text-white overflow-auto ${isLoginPage || isSignupPage ? "lg:w-[100%]" : "lg:w-[75%] px-6 pt-4 m-2"} lg:ml-0`}>
+            <Popup/>
             <Routes>
                 <Route path="/" element={<DisplayHome/>}/>
                 <Route path="/login" element={<Login/>}/>

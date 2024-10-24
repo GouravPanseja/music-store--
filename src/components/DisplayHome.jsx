@@ -1,10 +1,11 @@
 import React ,{useContext, useState} from "react";
 import Navbar from "./Navbar";
-import { albumsData, songsData } from "../assets/assets";
+import { albumsData, songsData, instrumentData} from "../assets/assets";
 import AlbumItem from "./AlbumItem"
 import SongItem from "./SongItem"
 import { PlayerContext } from "../context/PlayerContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import InstrumentItem from "./InstrumentItem";
 
 export default function DisplayHome(){
 
@@ -34,6 +35,16 @@ export default function DisplayHome(){
                     {
                         songs.map((item, index)=>(
                             <SongItem key={index} name={item.name} desc={item.desc} id={item.id} image={item.image} liked={item.liked}/>
+                        ))
+                    }
+                </div> 
+            </div>
+            <div className="mb-4">
+                <h1 className="my-5 font-bold text-2xl">Music Instruments</h1>
+                <div className="flex overflow-auto">
+                    {
+                        instrumentData.map((item, index)=>(
+                            <InstrumentItem data={item}/>
                         ))
                     }
                 </div> 
