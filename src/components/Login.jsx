@@ -1,26 +1,79 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import "./styles/Signup.css";
 import {  login} from "../assets/assets.js"
 import { useNavigate,Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import axios from "axios";
 import { Oval } from "react-loader-spinner";
+import toast from "react-hot-toast";
+import { PlayerContext } from "../context/PlayerContext";
+
 
 export default function Login(){
+    console.log("hih")
     const navigate = useNavigate();
-
-    const {MdOutlineMailOutline, IoIosLock,FaEye,FaEyeSlash, googleLogo,microsoftLogo,signupImage} = login;
-
+    const {MdOutlineMailOutline, IoIosLock,FaEye,FaEyeSlash, googleLogo,microsoftLogo, logo , signupImage} = login;
     const [isShowPassword, setIsShowPassword] =  useState(false);
     const [email , setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isChecked, setIsChecked] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    var  error = false;
 
-    const [isLoading , setIsLoading] = useState(false);
+    const {profileData, setProfileData} = useContext(PlayerContext);
+
+
+    function sendDangerToast(msg){
+        toast(msg,{
+            icon: '⚠️',
+            style: {
+            borderRadius: '10px',
+            background: '#e70126',
+            color: '#fff',
+            },
+        });
+    }
+    function sendSuccessToast(msg){
+        toast(msg,{
+            icon: '✔',
+            style: {
+            borderRadius: '10px',
+            background: '#36b64c',
+            color: '#fff',
+            },
+        });
+    }
+
+    async function formSubmit(e){
+        e.preventDefault();
+
+        if(!email || !password){
+            sendDangerToast("Invalid input credentials")
+        }
+
+        const userData = JSON.parse(localStorage.getItem(`userData/${email}`));
+        console.log(userData);
+
+        if(!userData){
+            sendDangerToast("User doesn't exist");
+            return;
+        }
+        if(userData.password !== password){
+            sendDangerToast("Incorrect password");
+            return;
+        }
+
+        sendSuccessToast("User loggedIn succesfully!");
+
+        console.log('hi"')
+
+        setProfileData(userData);
+
+
+
+        navigate("/");
+    }
 
     return (
+
         <div 
             className="bg-[#191919] h-[100vh]  w-full flex flex-row "
         >
@@ -39,11 +92,11 @@ export default function Login(){
             >
 
                 
-                <form  className="w-full  p-[20px] flex flex-col justify-center items-center my-auto ">
+                <form onSubmit={(e)=> formSubmit(e)}  className="w-full  p-[20px] flex flex-col justify-center items-center my-auto ">
 
                     {/* heading */}
                     <div className="flex flex-col justify-center items-center gap-4">
-                        <h2 className="heading">Querify</h2>
+                        <h2 className="heading text-black">Sync Music</h2>
                         <p className=" text-[0.8rem] sm:[1rem] md:text-[1.3rem] font-extralight text-center text-[#5E5E5E]">Hello, who's this ? </p>
                     </div>
                 
@@ -56,14 +109,14 @@ export default function Login(){
                         <div className="flex gap-5 xxs:min-w-[300px] xxs:max-w-[300px] min-w-[250px] max-w-[250px] items-center justify-center border-[1px] border-black px-2 rounded-md">
                           
                             <label htmlFor="email">
-                                {/* <MdOutlineMailOutline className="text-xl"/> */}
+                                <MdOutlineMailOutline className="text-xl text-black"/>
                             </label>
                             <input 
                                 type="email" 
                                 name="email" 
                                 id="email"
                                 placeholder="Email" 
-                                className="outline-none p-2 w-full h-[45px]"
+                                className="outline-none p-2 w-full h-[45px] text-black"
                                 value={email}
                                 onChange = {(e)=> setEmail(e.target.value)}
                                
@@ -75,7 +128,7 @@ export default function Login(){
                         <div className="flex gap-5  xxs:min-w-[300px] xxs:max-w-[300px] min-w-[250px] max-w-[250px] items-center justify-center border-[1px] border-black px-2 rounded-md">
                             
                             <label htmlFor="pass">
-                                {/* <IoIosLock className="text-xl"/> */}
+                                <IoIosLock className="text-xl text-black"/>
                             </label>
 
                             <input 
@@ -83,7 +136,7 @@ export default function Login(){
                                 name="password" 
                                 id="pass"
                                 placeholder="Password" 
-                                className="outline-none p-2 w-full h-[45px]"  
+                                className="outline-none p-2 w-full h-[45px] text-black"  
                                 value={password}
                                 onChange = {(e)=> setPassword(e.target.value)}
                                 
@@ -113,8 +166,8 @@ export default function Login(){
                                     required={true}
                             
                                 />
-                                <p className="text-[0.88rem]">
-                                    I hereby acknowledge and  <Link className="underline">agree to abide by the terms</Link> set forth by Querify.
+                                <p className="text-[0.88rem] text-black">
+                                    I hereby acknowledge and  <Link className="underline">agree to abide by the terms</Link> set forth by Sync Music.
                                 </p>
                             </div>
                         </div>
@@ -129,7 +182,7 @@ export default function Login(){
                                 { 
                                     
                                     isLoading ? 
-                                    <Oval className="flex justify-center items-center" visible={true} height="25" width="25" color="#4fa94d" ariaLabel="oval-loading" wrapperStyle={{}} wrapperClass="" /> 
+                                    <Oval className="flex justify-center items-center" visible={true} height="25" width="25" color="#4fa94d" ariaLabel="oval-loading" /> 
                                     : 
                                     "Signin to continue"
                                 }
@@ -140,27 +193,27 @@ export default function Login(){
                         {/* OR  */}
                         <div className="flex w-[40%] items-center mt-7">
                             <div className="bg-gray-400 h-[1px] w-full"></div>
-                            <p className="p-2">OR</p>
+                            <p className="p-2 text-black">OR</p>
                             <div className="bg-gray-400 h-[1px] w-full"></div>
                         </div>
                         
                         {/* other signup options */}
                         <div className="flex flex-row gap-5 md:w-[45%] items-center justify-center">
-                            <div className="max-w-[150px] py-2 px-3 flex justify-between items-center xxs:border-[1px] border-black rounded-lg cursor-pointer">
+                            <div className="max-w-[150px] py-2 px-3 flex justify-between items-center sm:border-[1px] border-black rounded-lg cursor-pointer">
                                 <img 
                                     src={googleLogo}
                                     alt="google logo"
                                     className="h-8 w-8 "
                                 /> 
-                                <p className="xxs:block hidden mx-2"> Google </p>
+                                <p className="sm:block hidden mx-2 text-black"> Google </p>
                             </div>
-                            <div className="max-w-[150px] py-2 px-3 flex justify-between items-center xxs:border-[1px] border-black rounded-lg cursor-pointer">
+                            <div className="max-w-[150px] py-2 px-3 flex justify-between items-center sm:border-[1px] border-black rounded-lg cursor-pointer">
                                 <img 
                                     src={microsoftLogo}
                                     alt="microsoft logo object-cover"
                                     className="h-8 w-8 object-cover"
                                 /> 
-                                <p className="xxs:block hidden mx-2"> Microsoft </p>
+                                <p className="sm:block hidden  mx-2 text-black"> Microsoft </p>
                             </div>
                       
                            
@@ -185,7 +238,7 @@ export default function Login(){
                 className="lg:flex hidden gap-3 flex-col items-center  justify-center w-[45%] overflow-hidden relative">   
 
                 <div className="absolute top-3 right-0 flex items-center gap-5 mr-4">
-                    <p className="text-white text-sm font-extralight">New to Querify ? </p>
+                    <p className="text-white text-sm font-extralight">New to Sync Music ? </p>
                     <Link to="/signup" className="text-white font-extralight border-[1px] border-white px-2 rounded-md"> Signup </Link>
                 </div>
                 <div className=" text-center">
@@ -193,15 +246,18 @@ export default function Login(){
      
                 </div>
 
-                <div className="xl:w-[350px] w-[300px] xl:h-[350px] h-[300px] mt-3">
-                    <img
+                <div className="w-[300px] h-[300px] mt-3 rounded-full overflow-hidden">
+                    <video
                         src={signupImage}
                         alt="signupImage"
-                        className="object-contain"
+                        autoPlay
+                        loop
+                        muted
+                        className="object-cover h-full w-full rounded-full"
                     />
                 </div>
 
-                <p className="text-gray-200">&#169; Querify</p>
+                <p className="text-gray-200">&#169; Sync Music</p>
             </div>
 
         </div>

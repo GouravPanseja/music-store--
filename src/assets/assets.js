@@ -41,15 +41,20 @@ import img16 from './img16.jpg'
 import song1 from  './song1.mp3'
 import song2 from  './song2.mp3'
 import song3 from  './song3.mp3'
-import logo from "./logo.svg"
+import logo from "./logo.png"
 import { IoPersonSharp } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
 import { FaShieldHalved } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
-import signupImage from "./signupImage.webp";
+import signupImage from "./signup.mp4";
 import microsoftLogo from "./microsoftLogo.png";
 import googleLogo from "./googleLogo.png";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
+import SingupImage2 from "./SingupImage2.png"
+import SingupImage3 from "./SingupImage3.png"
 
 export const login ={
     FaEye,
@@ -60,6 +65,9 @@ export const login ={
     signupImage,
     microsoftLogo,
     googleLogo,
+    MdOutlineMailOutline,
+    logo,
+    signupImage,
 }
 
 
@@ -90,7 +98,11 @@ export const assets = {
     spotify_logo,
     clock_icon,
     logo,
-    IoPersonSharp
+    IoPersonSharp,
+    IoMdHeartEmpty,
+    FaHeart,
+    SingupImage2,
+    SingupImage3
 }
 
 export const albumsData = [
@@ -146,7 +158,8 @@ export const songsData = [
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"3:00",
-        dateAdded:1
+        dateAdded:1,
+        liked:false,
     },
     {
         id:1,
@@ -155,7 +168,8 @@ export const songsData = [
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:20",
-        dateAdded:3
+        dateAdded:3,
+        liked:false,
     },
     {
         id:2,
@@ -164,7 +178,8 @@ export const songsData = [
         file:song3,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:32",
-        dateAdded:2
+        dateAdded:2,
+        liked:false,
     },
     {
         id:3,
@@ -173,7 +188,8 @@ export const songsData = [
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:50",
-        dateAdded:7
+        dateAdded:7,
+        liked:false,
     },
     {
         id:4,
@@ -182,7 +198,8 @@ export const songsData = [
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"3:10",
-        dateAdded:8
+        dateAdded:8,
+        liked:false,
     },
     {
         id:5,
@@ -191,7 +208,8 @@ export const songsData = [
         file:song3,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:45",
-        dateAdded:10
+        dateAdded:10,
+        liked:false,
     },
     {
         id:6,
@@ -200,7 +218,8 @@ export const songsData = [
         file:song1,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:18",
-        dateAdded:2
+        dateAdded:2,
+        liked:false,
     },
     {
         id:7,
@@ -209,6 +228,7 @@ export const songsData = [
         file:song2,
         desc:"Put a smile on your face with these happy tunes",
         duration:"2:35",
-        dateAdded:5
+        dateAdded:5,
+        liked:false,
     }
 ]

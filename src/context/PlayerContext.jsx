@@ -88,7 +88,9 @@ const PlayerContextProvider = (props) => {
 
     }
 
+    const [songs, setSongs] = useState(songsData);
 
+    const [profileData, setProfileData] = useState({});
 
     const contextValue = {
         audioRef,
@@ -105,7 +107,11 @@ const PlayerContextProvider = (props) => {
         playWithId,
         prev,
         next,
-        seekSong
+        seekSong,
+        profileData,
+        setProfileData,
+        songs,
+        setSongs
     };
 
     return (

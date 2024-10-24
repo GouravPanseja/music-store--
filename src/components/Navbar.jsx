@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { PlayerContext } from "../context/PlayerContext";
+
 export default function Navbar(){
     const navigate = useNavigate();
+    const {profileData, setProfileData} = useContext(PlayerContext);
+
+
     return(
         <>
             <div className="w-full flex justify-between items-center font-semibold">
@@ -12,8 +17,8 @@ export default function Navbar(){
                 </div>
                 <div className="flex items-center gap-4 ">
                     <p className="bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer">Explore Premium</p>
-                    <p className="bg-black py-1 px-3 rounded-2xl text-[15px] cursor-pointer"> Install App</p>
-                    <p className="bg-purple-500 text-black w-7 h-7 rounded-full flex items-center justify-center">D</p>
+                    <p onClick={()=> navigate("/likedSongs")} className="bg-white hover:bg-[#dfdfdf] text-black py-1 px-3 rounded-2xl text-[15px] cursor-pointer"> Liked Songs</p>
+                    <p className="bg-purple-500 text-black w-[150px] h-7 rounded-sm flex items-center justify-center cursor-pointer hover:bg-purple-400">{profileData.name ? profileData.name : "User Profile"}</p>
                 </div>
             </div>
             <div className="flex items-center gap-2 mt-4">
