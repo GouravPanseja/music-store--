@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 
 export default function Navbar(){
     const navigate = useNavigate();
-    const {profileData, setProfileData} = useContext(PlayerContext);
+    const {profileData, setProfileData} = useContext(playerContext);
 
 
     return(

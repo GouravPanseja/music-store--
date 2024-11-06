@@ -3,13 +3,13 @@ import Navbar from "./Navbar";
 import { albumsData, songsData, instrumentData} from "../assets/assets";
 import AlbumItem from "./AlbumItem"
 import SongItem from "./SongItem"
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import InstrumentItem from "./InstrumentItem";
 
 export default function DisplayHome(){
 
-    const {songs, setSongs,profileData, setProfileData} = useContext(PlayerContext);
+    const {songs, setSongs,profileData, setProfileData} = useContext(playerContext);
     const navigate = useNavigate();
 
 

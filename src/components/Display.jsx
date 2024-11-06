@@ -6,7 +6,7 @@ import { albumsData } from "../assets/assets";
 import Login from "./Login";
 import Signup from "./Signup";
 import LikedSongs from "./LikedSongsDisplay";
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 import Popup from "./Popup";
 
 export default React.memo(function Display(){

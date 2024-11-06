@@ -1,12 +1,12 @@
 import React, { useContext,useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 import SongItem from "./SongItem";
 
 export default function LikedSongs(){
 
     const [likedSongs, setLikedSongs] = useState([]);
-    const {songs, setSongs} = useContext(PlayerContext);
+    const {songs, setSongs} = useContext(playerContext);
 
     useEffect(()=>{
         const filteredSongs = songs.filter((song)=> song.liked);

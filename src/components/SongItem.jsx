@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import {PlayerContext} from "../context/PlayerContext";
+import {playerContext} from "../context/PlayerContext";
 import {assets, songsData} from "../assets/assets"
 
 
 export default function SongItem({name, image, desc, id, liked}){
-    const {playWithId, songs, setSongs} = useContext(PlayerContext);
+    const {playWithId, songs, setSongs} = useContext(playerContext);
 
     const {IoMdHeartEmpty, FaHeart} = assets;
 

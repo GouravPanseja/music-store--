@@ -2,12 +2,12 @@ import { useContext, useState } from 'react'
 import Sidebar from "./components/Sidebar"
 import Player from './components/Player'
 import Display from './components/Display'
-import { PlayerContext } from './context/PlayerContext'; // Correct import
+import { playerContext } from './context/PlayerContext'; // Correct import
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const {audioRef, track} = useContext(PlayerContext);
+  const {audioRef, track} = useContext(playerContext);
   const location = useLocation();
   console.log(location);
 

@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import { songsData , assets} from "../assets/assets";
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 import Clock from "./Clock"
 export default function Player(){
 
-    const {track, seekBar, seekBg, playStatus, play, pause, time, next, prev, seekSong} = useContext(PlayerContext);
-
-
-
+    const {track, seekBar, seekBg, playStatus, play, pause, time, next, prev, seekSong} = useContext(playerContext);
 
 
 
@@ -51,8 +48,6 @@ export default function Player(){
                 <img className="w-4" src={assets.volume_icon} alt=""/>
                 <div className="w-20 bg-slate-50 h-1 rounded"></div>
                 <Clock/>
-                
-
             </div>
         </div>
     )

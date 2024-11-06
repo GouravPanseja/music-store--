@@ -4,7 +4,7 @@ import {  login} from "../assets/assets.js"
 import { useNavigate,Link } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import toast from "react-hot-toast";
-import { PlayerContext } from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 
 
 export default function Login(){
@@ -17,7 +17,7 @@ export default function Login(){
     const [isChecked, setIsChecked] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const {profileData, setProfileData} = useContext(PlayerContext);
+    const {profileData, setProfileData} = useContext(playerContext);
 
     function sendDangerToast(msg){
         toast(msg,{
